@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # voodoo-vpn.sh: Amazon EC2 user-data file for automatic configuration of a VPN
 # on a Ubuntu server instance. Tested with 12.04.
