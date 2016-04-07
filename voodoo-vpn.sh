@@ -21,10 +21,13 @@ if [[ "`uname`" == "Darwin" ]]; then
     exit 1
 fi
 
-# Please define your own values for those variables
-IPSEC_PSK=very_unsecure_key
-VPN_USER=johndoe
-VPN_PASSWORD=unsecure
+IPSEC_PSK=`read -s -p "IPSEC_PSK: " && echo "$REPLY"`
+VPN_USER=`read -s -p $'\n'"VPN_USER: " && echo "$REPLY"`
+VPN_PASSWORD=`read -s -p $'\n'"VPN_PASSWORD: " && echo "$REPLY"`
+
+if [[ -z "$IPSEC_PSK" ]] || [[ -z "$VPN_USER" ]] || [[ -z "$VPN_PASSWORD" ]]; then
+	exit
+fi
 
 # Those two variables will be found automatically
 PRIVATE_IP=`wget -q -O - 'http://169.254.169.254/latest/meta-data/local-ipv4'`
